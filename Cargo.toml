@@ -1,0 +1,22 @@
+[package]
+edition = "2021"
+name = "napi-rs_qetag"
+version = "0.0.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+# Default enable napi4 feature, see https://nodejs.org/api/n-api.html#node-api-version-matrix
+napi = { version = "2.4.3", default-features = false, features = ["napi4", "tokio_rt"] }
+napi-derive = "2.4.1"
+tokio = { version = "1", features = ["full"] }
+sha-1 = "0.10.0"
+base64-url = "1.4.13"
+futures = "0.3.21"
+
+[build-dependencies]
+napi-build = "2.0.0"
+
+[profile.release]
+lto = true
